@@ -21,12 +21,17 @@ windows服务器配置流程解析
   2. 防火墙设置
   ![](./static/1.png '1')
 
-  3. ![](./static/2.png '2')
+  3. 入站规则设置
+  ![](./static/2.png '2')
 
-  4. ![](./static/3.png '3')
+  4. 入站规则设置
+  ![](./static/3.png '3')
 
-  5. ![](./static/4.png '4')
+  5. 入站规则设置
+  ![](./static/4.png '4')
 
-  6. ![](./static/5.png '5')
+  6. 入站规则设置
+  ![](./static/5.png '5')
 
-  7. ![](./static/6.png '6')
+  7. 入站规则设置
+  ![](./static/6.png '6')
