@@ -18,7 +18,8 @@ windows服务器配置流程解析
 
   1. Win+R 唤起运行窗口，键入 wf.msc 进入防火墙设置
 
-  2. ![](./static/1.png '1')
+  2. 防火墙设置
+  ![](./static/1.png '1')
 
   3. ![](./static/2.png '2')
 
