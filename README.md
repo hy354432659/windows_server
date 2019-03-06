@@ -127,14 +127,14 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 ## Nginx 配置为系统服务
 
-1. 首先感谢 kohsuke 大佬分享注册服务工具 winsw，请下载 WinSW.NET4.exe
+1. 首先感谢 [kohsuke](https://github.com/kohsuke) 大佬分享注册服务工具 winsw，请下载 WinSW.NET4.exe
  和 sample-minimal.xml 两个文件；[下载地址](https://github.com/kohsuke/winsw/releases)
 
- 2. 将 WinSW.NET4.exe 和 sample-minimal.xml 文件复制到 C:/wnmp/nginx/ 文件夹内，并重命名为 nginx-server.exe 和 nginx-server.xml （此为例子，只需保证两个文件名字相同即可）
+2. 将 WinSW.NET4.exe 和 sample-minimal.xml 文件复制到 C:/wnmp/nginx/ 文件夹内，并重命名为 nginx-server.exe 和 nginx-server.xml （此为例子，只需保证两个文件名字相同即可）
 
- 3. 修改 nginx-server.xml 文件，内容如下：
- ```xml
- <configuration>
+3. 修改 nginx-server.xml 文件，内容如下：
+```xml
+<configuration>
   
     <!-- ID of the service. It should be unique accross the Windows system-->
     <id>Nginx</id>
