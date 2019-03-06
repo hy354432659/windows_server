@@ -73,9 +73,9 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
     ```
       location = /favicon.ico {
-			    log_not_found off;
-			    access_log off;
-		  }
+          log_not_found off;
+          access_log off;
+      }
     ```
 
     * 需要支持php的话，找到如图代码，将 # 删除，root 改为网站路径， fastcgi_param 修改如下图所示<br/>![](./static/n5.png 'n5')
