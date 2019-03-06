@@ -60,7 +60,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
     * 选添这三行，可以让 nginx 显示文件目录<br/>![](./static/n1.png 'n1')
 
     ```
-    autoindex on;  
-    autoindex_exact_size off; 
-    autoindex_localtime on;
+      autoindex on;  
+      autoindex_exact_size off; 
+      autoindex_localtime on;
     ```
