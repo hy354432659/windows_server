@@ -91,3 +91,34 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
     ```
 
 至此，Nginx 基础配置完毕
+
+
+
+## Php配置
+
+1. 在Php官网下载最新版php压缩包（VC15），本文最新版为：7.3.2 VC15 x64；[下载页](https://windows.php.net/download/)
+
+2. 将压缩包解压到 C:/wnmp/ 下，命名为 php 
+
+3. 在php目录下，将 php.ini-development 文件复制一份并重命名为 php.ini ，打开此文件
+
+    * 搜索 extension_dir ，找到：extension_dir = "ext"，先去前面的分号再改为 extension_dir = "你的php目录/ext"，例如：extension_dir = "C:/wnmp/php/ext"
+
+    * 搜索 enable_dl ，找到：enable_dl = Off 改为 enable_dl = On
+
+    * 搜索 cgi.force_redirect ，去掉 cgi.force_redirect = 1 前面的分号再改为 cgi.force_redirect = 0
+
+    * 搜索 date.timezone ，找到：;date.timezone = ，去掉前面的分号再改为 date.timezone = Asia/Shanghai
+
+    * 搜索 fastcgi.impersonate ，找到：;fastcgi.impersonate = 1 ，去掉前面的分号
+
+    * 搜索 cgi.rfc2616_headers ，找到：;cgi.rfc2616_headers = 0 ，去掉前面的分号再改为 cgi.rfc2616_headers = 1
+
+    * 之后找到：;extension=pdo_mysql 和 ;extension=mysqli ，去掉前面的分号，用于支持MYSQL数据库，其余的 extension 根据需求去掉分号打开<br/>![](./static/p1.png 'p1')
+
+至此，Php 的基本配置完毕，在www目录下新建 index.php 文件，内容为：
+```php
+<?php
+    phpinfo();
+?>
+```
