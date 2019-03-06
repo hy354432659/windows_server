@@ -1,6 +1,6 @@
 # W(indows) N(ginx) M(ysql) P(hp) 服务器配置
 
-windows服务器配置流程解析
+windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 
 ## 服务器远程登录端口修改
@@ -50,3 +50,19 @@ windows服务器配置流程解析
 
 
 ## Nginx配置
+
+1. 在Nginx官网下载最新的稳定版（Stable version），本文最新版为：1.14.2；[下载页](http://nginx.org/en/download.html)
+
+2. 将压缩包解压到 C:/wnmp/ 下，命名为 nginx 
+
+3. 开打 nginx/conf/ 下的 nginx.conf 文件，此文件为 nginx 的配置文件
+
+  * 选添这三行，可以让 nginx 显示文件目录<br/>
+
+  ![](./static/n1.png 'n1')<br/>
+
+  ```
+  autoindex on;  
+  autoindex_exact_size off; 
+  autoindex_localtime on;
+  ```
