@@ -51,7 +51,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 ## Nginx配置
 
-1. 在Nginx官网下载最新的稳定版（Stable version），本文最新版为：1.14.2；[下载页](http://nginx.org/en/download.html)
+1. 在Nginx官网下载最新的稳定版（Stable version），本文最新版为：1.14.2；[下载地址](http://nginx.org/en/download.html)
 
 2. 将压缩包解压到 C:/wnmp/ 下，命名为 nginx 
 
@@ -96,7 +96,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 ## Php配置
 
-1. 在Php官网下载最新版php压缩包（VC15），本文最新版为：7.3.2 VC15 x64；[下载页](https://windows.php.net/download/)
+1. 在Php官网下载最新版php压缩包（VC15），本文最新版为：7.3.2 VC15 x64；[下载地址](https://windows.php.net/download/)
 
 2. 将压缩包解压到 C:/wnmp/ 下，命名为 php 
 
@@ -116,9 +116,39 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
     * 之后找到：;extension=pdo_mysql 和 ;extension=mysqli ，去掉前面的分号，用于支持MYSQL数据库，其余的 extension 根据需求去掉分号打开<br/>![](./static/p1.png 'p1')
 
-至此，Php 的基本配置完毕，在www目录下新建 index.php 文件，内容为：
+至此，Php 的基本配置完毕，在C:/wnmp/www目录下新建 index.php 文件，内容为：
 ```php
 <?php
     phpinfo();
 ?>
+```
+
+
+
+## Nginx 配置为系统服务
+
+1. 首先感谢 kohsuke 大佬分享注册服务工具 winsw，请下载 WinSW.NET4.exe
+ 和 sample-minimal.xml 两个文件；[下载地址](https://github.com/kohsuke/winsw/releases)
+
+ 2. 将 WinSW.NET4.exe 和 sample-minimal.xml 文件复制到 C:/wnmp/nginx/ 文件夹内，并重命名为 nginx-server.exe 和 nginx-server.xml （此为例子，只需保证两个文件名字相同即可）
+
+ 3. 修改 nginx-server.xml 文件，内容如下：
+ ```xml
+ <configuration>
+  
+    <!-- ID of the service. It should be unique accross the Windows system-->
+    <id>Nginx</id>
+    <!-- Display name of the service -->
+    <name>Nginx Service</name>
+    <!-- Service description -->
+    <description>This service is a service cratead from a minimal configuration</description>
+
+    <!-- Path to the executable, which should be started -->
+    <executable>%BASE%\nginx.exe</executable>
+    <logpath>%BASE%\logs</logpath>
+    <startarguments>-p %BASE%\nginx.exe</startarguments>
+    <stopexecutable>%BASE%\nginx.exe</stopexecutable>
+    <stoparguments>-s stop</stoparguments>-->
+ 
+</configuration>
 ```
