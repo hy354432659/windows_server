@@ -64,3 +64,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
       autoindex_exact_size off; 
       autoindex_localtime on;
     ```
+
+    * 此处将 charset 前的 # 去掉，并改成 utf-8 编码<br/>![](./static/n2.png 'n2')
+
+    * 此处将 root 指向网站目录，例如：C:/wnmp/www ；如需开启php，可在 index 后添加 index.php<br/>![](./static/n3.png 'n3')
