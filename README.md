@@ -7,16 +7,16 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 ### 修改注册表
 
-1. Win+R 唤起运行窗口，键入 regedit 进入注册表
+1. Win+R 唤起运行窗口，键入 `regedit` 进入注册表
 
-2. 找到 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp] 下的 PortNumber 键值（默认为16进制，可修改成十进制）；此处修改为需求端口号（例如：2121）
+2. 找到 `[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp]` 下的 `PortNumber` 键值（默认为16进制，可修改成十进制）；此处修改为需求端口号（例如：2121）
 
-3. 找到 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Tenninal Server\WinStations\RDP-Tcp] 下的 PortNumber 键值，同上修改
+3. 找到 `[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Tenninal Server\WinStations\RDP-Tcp]` 下的 `PortNumber` 键值，同上修改
 
 
 ### 设置防火墙
 
-1. Win+R 唤起运行窗口，键入 wf.msc 进入防火墙设置
+1. Win+R 唤起运行窗口，键入 `wf.msc` 进入防火墙设置
 
 2. 防火墙设置
 ![](./static/1.png '1')
@@ -55,7 +55,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 2. 将压缩包解压到 C:/wnmp/ 下，命名为 nginx 
 
-3. 开打 nginx/conf/ 下的 nginx.conf 文件，此文件为 nginx 的配置文件
+3. 开打 nginx/conf/ 下的 `nginx.conf` 文件，此文件为 nginx 的配置文件
 
     * 选添这三行，可以让 nginx 显示文件目录<br/>![](./static/n1.png 'n1')
 
@@ -65,9 +65,9 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
       autoindex_localtime on;
     ```
 
-    * 此处将 charset 前的 # 去掉，并改成 utf-8 编码<br/>![](./static/n2.png 'n2')
+    * 此处将 `charset` 前的 # 去掉，并改成 `utf-8` 编码<br/>![](./static/n2.png 'n2')
 
-    * 此处将 root 指向网站目录，例如：C:/wnmp/www ；如需开启php，可在 index 后添加 index.php<br/>![](./static/n3.png 'n3')
+    * 此处将 `root` 指向网站目录，例如：C:/wnmp/www ；如需开启php，可在 index 后添加 `index.php`<br/>![](./static/n3.png 'n3')
 
     * 添加这几行代码，是因为 nginx 运行多次后，会出现一个图片找不到的错误，可用此代码屏蔽<br/>![](./static/n4.png 'n4')
 
@@ -78,7 +78,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
       }
     ```
 
-    * 需要支持php的话，找到如图代码，将 # 删除，root 改为网站路径， fastcgi_param 修改如下图所示<br/>![](./static/n5.png 'n5')
+    * 需要支持php的话，找到如图代码，将 # 删除，`root` 改为网站路径， `fastcgi_param` 修改如下图所示<br/>![](./static/n5.png 'n5')
 
     ```
       location ~ \.php$ {
@@ -102,19 +102,19 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 3. 在php目录下，将 php.ini-development 文件复制一份并重命名为 php.ini ，打开此文件
 
-    * 搜索 extension_dir ，找到：extension_dir = "ext"，先去前面的分号再改为 extension_dir = "你的php目录/ext"，例如：extension_dir = "C:/wnmp/php/ext"
+    * 搜索 `extension_dir` ，找到：`extension_dir = "ext"`，先去前面的分号再改为 extension_dir = "你的php目录/ext"，例如：`extension_dir = "C:/wnmp/php/ext"`
 
-    * 搜索 enable_dl ，找到：enable_dl = Off 改为 enable_dl = On
+    * 搜索 `enable_dl` ，找到：`enable_dl = Off` 改为 `enable_dl = On`
 
-    * 搜索 cgi.force_redirect ，去掉 cgi.force_redirect = 1 前面的分号再改为 cgi.force_redirect = 0
+    * 搜索 `cgi.force_redirect` ，去掉 `cgi.force_redirect = 1` 前面的分号再改为 `cgi.force_redirect = 0`
 
-    * 搜索 date.timezone ，找到：;date.timezone = ，去掉前面的分号再改为 date.timezone = Asia/Shanghai
+    * 搜索 `date.timezone` ，找到：`;date.timezone =` ，去掉前面的分号再改为 `date.timezone = Asia/Shanghai`
 
-    * 搜索 fastcgi.impersonate ，找到：;fastcgi.impersonate = 1 ，去掉前面的分号
+    * 搜索 `fastcgi.impersonate` ，找到：`;fastcgi.impersonate = 1` ，去掉前面的分号
 
-    * 搜索 cgi.rfc2616_headers ，找到：;cgi.rfc2616_headers = 0 ，去掉前面的分号再改为 cgi.rfc2616_headers = 1
+    * 搜索 `cgi.rfc2616_headers` ，找到：`;cgi.rfc2616_headers = 0` ，去掉前面的分号再改为 `cgi.rfc2616_headers = 1`
 
-    * 之后找到：;extension=pdo_mysql 和 ;extension=mysqli ，去掉前面的分号，用于支持MYSQL数据库，其余的 extension 根据需求去掉分号打开<br/>![](./static/p1.png 'p1')
+    * 之后找到：`;extension=pdo_mysql` 和 `;extension=mysqli` ，去掉前面的分号，用于支持MYSQL数据库，其余的 extension 根据需求去掉分号打开<br/>![](./static/p1.png 'p1')
 
 至此，Php 的基本配置完毕，在C:/wnmp/www目录下新建 index.php 文件，内容为：
 ```php
@@ -152,3 +152,5 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
  
 </configuration>
 ```
+
+4. 使用管理员身份启动cmd，进入到当前目录下（C:/wnmp/nginx/），输入 `nginx-server.exe install` 并回车，服务就可正确安装，Win+R 输入 `services.msc` 回车，在服务中即可看到 nginx 服务，右键点击启动
