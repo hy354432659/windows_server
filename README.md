@@ -68,3 +68,26 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
     * 此处将 charset 前的 # 去掉，并改成 utf-8 编码<br/>![](./static/n2.png 'n2')
 
     * 此处将 root 指向网站目录，例如：C:/wnmp/www ；如需开启php，可在 index 后添加 index.php<br/>![](./static/n3.png 'n3')
+
+    * 添加这几行代码，是因为 nginx 运行多次后，会出现一个图片找不到的错误，可用此代码屏蔽<br/>![](./static/n4.png 'n4')
+
+    ```
+      location = /favicon.ico {
+			    log_not_found off;
+			    access_log off;
+		  }
+    ```
+
+    * 需要支持php的话，找到如图代码，将 # 删除，root 改为网站路径， fastcgi_param 修改如下图所示<br/>![](./static/n5.png 'n5')
+
+    ```
+      location ~ \.php$ {
+          root           c:/wnmp/www;
+          fastcgi_pass   127.0.0.1:9000;
+          fastcgi_index  index.php;
+          fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+          include        fastcgi_params;
+      }
+    ```
+
+至此，Nginx 基础配置完毕
