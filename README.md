@@ -154,3 +154,5 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 ```
 
 4. 使用管理员身份启动cmd，进入到当前目录下（C:/wnmp/nginx/），输入 `nginx-server.exe install` 并回车，服务就可正确安装，Win+R 输入 `services.msc` 回车，在服务中即可看到 nginx 服务，右键点击启动
+
+至此，Nginx 系统服务安装完毕
