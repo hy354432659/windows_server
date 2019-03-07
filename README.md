@@ -116,7 +116,7 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
     * 之后找到：`;extension=pdo_mysql` 和 `;extension=mysqli` ，去掉前面的分号，用于支持MYSQL数据库，其余的 extension 根据需求去掉分号打开<br/>![](./static/p1.png 'p1')
 
-至此，Php 的基本配置完毕，在 C:/wnmp/www/ 目录下新建 `index.php` 文件，内容为：
+至此，Php 的基础配置完毕，在 C:/wnmp/www/ 目录下新建 `index.php` 文件，内容为：
 ```php
 <?php
     phpinfo();
