@@ -221,3 +221,25 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
     * 运行 `registe.bat`，完成 `pthreadgc2.dll` 注册（如果32位的系统，请将system32替换为system32）。完成后可将此文件删除
 
 至此，Php服务安装完毕，可在任务管理器中看到开启数量的 `CGI/FastCGI` 进程
+
+
+
+## Mysql安装
+
+1. 在Mysql官网下载最新版，本文最新版为：8.0.15；[下载地址](https://dev.mysql.com/downloads/installer/)，请下载非web版（比较大的那个）
+
+2. 安装时可选择仅安装 `mysql server`，端口和密码可自行修改，记住即可
+
+3. 如需在服务器端安装 `Navicat Premium` 数据库管理工具的话，连接数据库可能会报错 `1251`，运行mysql命令行，执行以下语句可解决问题
+```mysql
+#修改加密规则，password为安装时设置的mysql数据库密码
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; 
+
+#更新一下用户的密码
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; 
+
+#刷新权限
+FLUSH PRIVILEGES; 
+```
+
+至此，Mysql安装完毕
