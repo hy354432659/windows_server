@@ -1,8 +1,6 @@
 # W(indows) N(ginx) M(ysql) P(hp) 服务器配置
 
-windows服务器配置流程解析，全文默认路径均为：C:/wnmp/，目录如下：
-
-[TOC]
+windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
 
 
 ## 服务器远程登录端口修改
