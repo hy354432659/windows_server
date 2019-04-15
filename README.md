@@ -90,6 +90,14 @@ windows服务器配置流程解析，全文默认路径均为：C:/wnmp/
       }
     ```
 
+    * 需要支持访问不存在路径时，跳转到对应页面处理，请在 `location` 和 `php location` 中添加如下代码：（index.php为目标文件，可自行更换）
+
+    ```
+      if (!-e $request_filename) {
+          rewrite ^/(.*)$ /index.php redirect;
+      }
+    ```
+
 至此，Nginx 基础配置完毕
 
 
